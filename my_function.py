@@ -4,7 +4,8 @@ import statsmodels.api as sm
 #NAN,inf处理函数
 def deal_nan(df,factors,method):
     df_=df.copy()
-    df_.iloc[np.where(np.isinf(df_))]=np.nan
+    #df_.iloc[np.where(np.isinf(df_))]=np.nan
+    df_=df_.replace([np.inf,-np.inf],np.nan)
     if method=="0":#用0补充
         df_=df_.fillna(0)
     if method=="mean":#截面均值补充
